@@ -1,5 +1,5 @@
 syntax = "proto2";
-option go_package = "github.com/argoproj/argo-cd/v2/pkg/apiclient/application";
+option go_package = "github.com/vathsalashetty96/argo-cd/v2/pkg/apiclient/application";
 
 // Application Service
 //
@@ -10,8 +10,8 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
-import "github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1/generated.proto";
-import "github.com/argoproj/argo-cd/v2/reposerver/repository/repository.proto";
+import "github.com/vathsalashetty96/argo-cd/v2/pkg/apis/application/v1alpha1/generated.proto";
+import "github.com/vathsalashetty96/argo-cd/v2/reposerver/repository/repository.proto";
 
 
 // ApplicationQuery is a query for application resources
