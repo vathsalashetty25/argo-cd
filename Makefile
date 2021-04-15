@@ -1,4 +1,4 @@
-PACKAGE=github.com/argoproj/argo-cd/v2/common
+PACKAGE=github.com/vathsalashetty96/argo-cd/v2/common
 CURRENT_DIR=$(shell pwd)
 DIST_DIR=${CURRENT_DIR}/dist
 CLI_NAME=argocd
@@ -21,7 +21,7 @@ GOPATH?=$(shell if test -x `which go`; then go env GOPATH; else echo "$(HOME)/go
 GOCACHE?=$(HOME)/.cache/go-build
 
 DOCKER_SRCDIR?=$(GOPATH)/src
-DOCKER_WORKDIR?=/go/src/github.com/argoproj/argo-cd
+DOCKER_WORKDIR?=/go/src/github.com/vathsalashetty96/argo-cd
 
 ARGOCD_PROCFILE?=Procfile
 
@@ -56,11 +56,11 @@ ARGOCD_LINT_GOGC?=20
 
 # Depending on where we are (legacy or non-legacy pwd), we need to use
 # different Docker volume mounts for our source tree
-LEGACY_PATH=$(GOPATH)/src/github.com/argoproj/argo-cd
+LEGACY_PATH=$(GOPATH)/src/github.com/vathsalashetty96/argo-cd
 ifeq ("$(PWD)","$(LEGACY_PATH)")
 DOCKER_SRC_MOUNT="$(DOCKER_SRCDIR):/go/src$(VOLUME_MOUNT)"
 else
-DOCKER_SRC_MOUNT="$(PWD):/go/src/github.com/argoproj/argo-cd$(VOLUME_MOUNT)"
+DOCKER_SRC_MOUNT="$(PWD):/go/src/github.com/vathsalashetty96/argo-cd$(VOLUME_MOUNT)"
 endif
 
 # Runs any command in the argocd-test-utils container in server mode
