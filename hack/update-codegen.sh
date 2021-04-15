@@ -37,7 +37,7 @@ export GO111MODULE=on
 
 [ -e ./v2 ] || ln -s . v2
 bash -x ${TARGET_SCRIPT} "deepcopy,client,informer,lister" \
-  github.com/argoproj/argo-cd/v2/pkg/client github.com/argoproj/argo-cd/v2/pkg/apis \
+  github.com/vathsalashetty96/argo-cd/v2/pkg/client github.com/vathsalashetty96/argo-cd/v2/pkg/apis \
   "application:v1alpha1" \
   --go-header-file ${SCRIPT_ROOT}/hack/custom-boilerplate.go.txt
 [ -e ./v2 ] && rm -rf v2
