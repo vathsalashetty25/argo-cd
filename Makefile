@@ -175,15 +175,6 @@ gogen: ensure-gopath
 	export GO111MODULE=off
 	go generate ./util/argo/...
 
-.PHONY: protogen
-protogen: ensure-gopath
-	export GO111MODULE=off
-	./hack/generate-proto.sh
-
-.PHONY: openapigen
-openapigen: ensure-gopath
-	export GO111MODULE=off
-	./hack/update-openapi.sh
 
 .PHONY: clientgen
 clientgen: ensure-gopath
