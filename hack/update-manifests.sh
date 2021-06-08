@@ -6,7 +6,7 @@ set -o pipefail
 
 KUSTOMIZE=kustomize
 
-SRCROOT="$( CDPATH='' cd -- "$(dirname "$0")/.." && pwd -P )"
+SRCROOT=$GOPATH/src/vathsalashetty25/argo-cd
 AUTOGENMSG="# This is an auto-generated file. DO NOT EDIT"
 
 cd ${SRCROOT}/manifests/ha/base/redis-ha && ./generate.sh
