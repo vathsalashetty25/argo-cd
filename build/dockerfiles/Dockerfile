@@ -37,6 +37,9 @@ ADD hack hack
 
 COPY go.mod go.mod
 COPY go.sum go.sum
+
+RUN go mod -modcache
+
 RUN go mod download
 RUN go mod vendor -v
 #RUN ./hack/update-codegen.sh
