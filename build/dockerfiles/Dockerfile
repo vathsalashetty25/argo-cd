@@ -11,7 +11,7 @@ RUN export GOPATH=$(go env GOPATH)
   
 
     
-WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
+WORKDIR /go/src/github.com/argoproj/argo-cd
 
 
 
