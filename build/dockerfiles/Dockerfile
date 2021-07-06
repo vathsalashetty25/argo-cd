@@ -9,14 +9,14 @@ COPY go.sum go.sum
 RUN go mod download
 
 # Perform the build
-#COPY . .
-#RUN make cli-local server controller repo-server argocd-util
+COPY . .
+RUN make cli-local server controller repo-server argocd-util
 
-#ARG BUILD_ALL_CLIS=true
-#RUN if [ "$BUILD_ALL_CLIS" = "true" ] ; then \
-    #make CLI_NAME=argocd-linux-ppc64le GOOS=linux cli-local && \
-    #make CLI_NAME=argocd-linux-ppc64le.exe GOOS=linux cli-local \
-    #; fi
+ARG BUILD_ALL_CLIS=true
+RUN if [ "$BUILD_ALL_CLIS" = "true" ] ; then \
+    make CLI_NAME=argocd-linux-ppc64le GOOS=linux cli-local && \
+    make CLI_NAME=argocd-linux-ppc64le.exe GOOS=linux cli-local \
+    ; fi
 
   
 RUN apt-get update && apt-get install -y \
