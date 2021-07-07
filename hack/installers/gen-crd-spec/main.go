@@ -9,9 +9,9 @@ import (
 	"strings"
 	
 
-	"github.com/argoproj/argo-cd/pkg/apis/application"
+	"github.com/vathsalashetty25/argo-cd/pkg/apis/application"
 
-	"github.com/argoproj/gitops-engine/pkg/utils/kube"
+	"github.com/vathsalashetty25/gitops-engine/pkg/utils/kube"
 	"github.com/ghodss/yaml"
 	extensionsobj "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
