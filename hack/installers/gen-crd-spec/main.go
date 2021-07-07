@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"application"
 
 	//"github.com/vathsalashetty25/argo-cd/pkg/apis/application"
 
