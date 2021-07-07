@@ -15,8 +15,7 @@ go build -o dist/openapi-gen ${CODEGEN_PKG}/cmd/openapi-gen
   --input-dirs github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
   --output-package github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
   --report-filename pkg/apis/api-rules/violation_exceptions.list \
-  --report-filename1 ${PROJECT_ROOT}/hack/dev-mounter \
   $@
 
-go build -o /dist/gen-crd-spec ${PROJECT_ROOT}/hack/dev-mounter
-./dist/dev-mounter
+go build -o ./dist/gen-crd-spec ${PROJECT_ROOT}/hack/installers/gen-crd-spec
+./dist/gen-crd-spec
