@@ -34,14 +34,14 @@ RUN go mod download
 ADD hack/install.sh .
 ADD hack/installers installers
 ADD hack/tool-versions.sh .
-ADD hack hack
 
-RUN ./install.sh protoc-linux
-RUN ./install.sh swagger-linux
-RUN ./install.sh jq-linux
-RUN ./install.sh kustomize-linux
+RUN ./install.sh packr-linux
+RUN ./install.sh kubectl-linux
+RUN ./install.sh ksonnet-linux
 RUN ./install.sh helm2-linux
 RUN ./install.sh helm-linux
+RUN ./install.sh kustomize-linux
+RUN ./install.sh swagger-linux
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
