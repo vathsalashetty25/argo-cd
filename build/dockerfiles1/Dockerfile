@@ -26,6 +26,7 @@ WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 ADD hack/install.sh .
 ADD hack/installers installers
 ADD hack/tool-versions.sh .
+ADD hack hack
 
 RUN ./install.sh packr-linux
 RUN ./install.sh kubectl-linux
@@ -34,3 +35,15 @@ RUN ./install.sh helm2-linux
 RUN ./install.sh helm-linux
 RUN ./install.sh kustomize-linux
 RUN ./install.sh swagger-linux
+
+
+COPY go.mod go.mod
+COPY go.sum go.sum
+RUN go mod download
+RUN go mod vendor
+
+RUN ./hack/update-codegen.sh
+RUN helm2 init --client-only
+RUN ./hack/update-manifests.sh
+
+
