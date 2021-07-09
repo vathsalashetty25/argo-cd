@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
+WORKDIR /tmp
 
 ADD hack/install.sh .
 ADD hack/installers installers
