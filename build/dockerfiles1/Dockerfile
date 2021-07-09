@@ -1,9 +1,6 @@
 FROM golang:1.14.12-buster as argocd-build
 
 
-WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
-
-
 
 # Perform the build
 COPY . .
