@@ -1,7 +1,7 @@
 FROM golang:1.14.12-buster as argocd-build
 
 WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
-#RUN go get golang.org/x/tools/cmd/goimports
+RUN go get golang.org/x/tools/cmd/goimports
 
 COPY go.mod go.mod
 COPY go.sum go.sum
@@ -44,12 +44,12 @@ ADD hack/installers installers
 ADD hack/tool-versions.sh .
 ADD hack hack
 
-#RUN ./install.sh protoc-linux
-#RUN ./install.sh swagger-linux
-#RUN ./install.sh jq-linux
-#RUN ./install.sh kustomize-linux
-#RUN ./install.sh helm2-linux
-#RUN ./install.sh helm-linux
+RUN ./install.sh protoc-linux
+RUN ./install.sh swagger-linux
+RUN ./install.sh jq-linux
+RUN ./install.sh kustomize-linux
+RUN ./install.sh helm2-linux
+RUN ./install.sh helm-linux
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
@@ -66,12 +66,12 @@ RUN go mod vendor
 #RUN set -x
 #RUN export GOPATH=$(go env GOPATH)
 #RUN export GO111MODULE=off
-#RUN ./hack/update-codegen.sh
+RUN ./hack/update-codegen.sh
 #RUN ./hack/generate-proto.sh
 #RUN ./hack/update-codegen.sh
 #RUN ./install.sh kustomize-linux
-#RUN helm2 init --client-only
+RUN helm2 init --client-only
 
-#RUN ./hack/update-manifests.sh
-#RUN ./hack/generate-proto.sh
-RUN ./hack/update-openapi.sh
+RUN ./hack/update-manifests.sh
+RUN ./hack/generate-proto.sh
+#RUN ./hack/update-openapi.sh
