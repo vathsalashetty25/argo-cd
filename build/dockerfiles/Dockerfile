@@ -35,9 +35,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 
 
-COPY go.mod go.mod
-COPY go.sum go.sum
-RUN go mod download
+
 
 ADD hack/install.sh .
 ADD hack/installers installers
@@ -49,9 +47,9 @@ RUN ./install.sh protoc-linux
 RUN ./install.sh swagger-linux
 RUN ./install.sh jq-linux
 
-RUN ./install.sh helm2-linux
-RUN ./install.sh helm-linux
-RUN ./install.sh kustomize-linux
+COPY go.mod go.mod
+COPY go.sum go.sum
+RUN go mod download
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
@@ -68,12 +66,12 @@ RUN go mod vendor
 #RUN set -x
 #RUN export GOPATH=$(go env GOPATH)
 #RUN export GO111MODULE=off
-RUN ./hack/update-codegen.sh
+#RUN ./hack/update-codegen.sh
 #RUN ./hack/generate-proto.sh
 #RUN ./hack/update-codegen.sh
 #RUN ./install.sh kustomize-linux
-RUN helm2 init --client-only
+#RUN helm2 init --client-only
 
-RUN ./hack/update-manifests.sh
+#RUN ./hack/update-manifests.sh
 RUN ./hack/generate-proto.sh
 #RUN ./hack/update-openapi.sh
