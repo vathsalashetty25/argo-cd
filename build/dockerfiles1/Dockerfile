@@ -1,13 +1,19 @@
-ARG BASE_IMAGE=ubuntu:20.10
-####################################################################################################
-# Builder image
-# Initial stage which pulls prepares build dependencies and CLI tooling we need for our final image
-# Also used as the image in CI jobs so needs all dependencie
-####################################################################################################
-FROM golang:1.14.12 as builder
+FROM golang:1.14.12-buster as argocd-build
 
-RUN echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 
+WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
+
+
+
+# Perform the build
+COPY . .
+RUN make cli-local server controller repo-server argocd-util
+
+ARG BUILD_ALL_CLIS=true
+RUN if [ "$BUILD_ALL_CLIS" = "true" ] ; then \
+    make CLI_NAME=argocd-linux-ppc64le GOOS=linux cli-local && \
+    make CLI_NAME=argocd-linux-ppc64le.exe GOOS=linux cli-local \
+    ; fi
 RUN apt-get update && apt-get install -y \
     openssh-server \
     nginx \
