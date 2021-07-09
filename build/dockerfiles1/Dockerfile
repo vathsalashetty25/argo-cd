@@ -36,33 +36,12 @@ RUN ./install.sh helm-linux
 RUN ./install.sh kustomize-linux
 RUN ./install.sh swagger-linux
 
-RUN helm2 init --client-only
-RUN ./hack/update-manifests.sh
-
-FROM golang:1.14.12-buster as argocd-build
-
-
-WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
-
 COPY go.mod go.mod
 COPY go.sum go.sum
 
 RUN go mod download
-
-# Perform the build
-COPY . .
-RUN make cli-local server controller repo-server argocd-util
-
-ARG BUILD_ALL_CLIS=true
-RUN if [ "$BUILD_ALL_CLIS" = "true" ] ; then \
-    make CLI_NAME=argocd-linux-ppc64le GOOS=linux cli-local && \
-    make CLI_NAME=argocd-linux-ppc64le.exe GOOS=linux cli-local \
-    ; fi
-
-
 RUN go mod vendor
 
-RUN ./hack/update-codegen.sh
-
-
+RUN helm2 init --client-only
+RUN ./hack/update-manifests.sh
 
