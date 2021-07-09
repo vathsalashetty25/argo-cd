@@ -36,6 +36,9 @@ RUN ./install.sh helm-linux
 RUN ./install.sh kustomize-linux
 RUN ./install.sh swagger-linux
 
+RUN helm2 init --client-only
+RUN ./hack/update-manifests.sh
+
 FROM golang:1.14.12-buster as argocd-build
 
 
@@ -60,7 +63,6 @@ RUN if [ "$BUILD_ALL_CLIS" = "true" ] ; then \
 RUN go mod vendor
 
 RUN ./hack/update-codegen.sh
-RUN helm2 init --client-only
-RUN ./hack/update-manifests.sh
+
 
 
