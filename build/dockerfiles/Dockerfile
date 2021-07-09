@@ -58,7 +58,7 @@ RUN go mod download
 #RUN go mod vendor
 #RUN ./hack/update-openapi.sh
 #RUN ./hack/generate-proto.sh
-#RUN ./hack/update-codegen.sh
+RUN ./hack/update-codegen.sh
 
 RUN go mod vendor 
 
