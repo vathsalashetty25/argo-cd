@@ -42,7 +42,10 @@ ADD hack/installers installers
 ADD hack/tool-versions.sh .
 ADD hack hack
 
+COPY go.mod go.mod
+COPY go.sum go.sum
 
+RUN go mod download
 
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
