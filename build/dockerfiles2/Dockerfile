@@ -47,6 +47,7 @@ COPY go.sum go.sum
 
 RUN go mod download
 
+RUN go env -w  GO111MODULE=auto
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
