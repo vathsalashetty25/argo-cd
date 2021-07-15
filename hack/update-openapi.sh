@@ -10,9 +10,8 @@ VERSION="v1alpha1"
 export GO111MODULE=off
 go build -o dist/openapi-gen ${CODEGEN_PKG}/cmd/openapi-gen
 
-PACKAGES=(
-    github.com/argoproj/argo-cd
-)
+PACKAGES="github.com/argoproj/argo-cd"
+
 
 ./dist/openapi-gen \
   --go-header-file ${PROJECT_ROOT}/hack/custom-boilerplate.go.txt \
