@@ -46,12 +46,12 @@ ADD hack hack
 #ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 #RUN go mod tidy
 #RUN go mod vendor
-#RUN ./hack/update-openapi.sh
+RUN ./hack/update-openapi.sh
 #RUN ./hack/generate-proto.sh
 #RUN ./hack/update-codegen.sh
 
 
-RUN ./hack/update-codegen.sh
+#RUN ./hack/update-codegen.sh
 
 #RUN ./hack/update-codegen.sh
 #RUN ./install.sh kustomize-linux
