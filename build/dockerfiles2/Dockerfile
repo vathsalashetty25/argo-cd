@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
-WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
+WORKDIR /go/src/github.com/argoproj/argo-cd
 
 
 
@@ -43,13 +43,7 @@ ADD hack/tool-versions.sh .
 ADD hack hack
 
 
-RUN ./install.sh protoc-linux
-RUN ./install.sh swagger-linux
-RUN ./install.sh jq-linux
 
-COPY go.mod go.mod
-COPY go.sum go.sum
-RUN go mod download
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
