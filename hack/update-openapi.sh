@@ -17,7 +17,7 @@ PACKAGES="github.com/argoproj/argo-cd"
   --go-header-file ${PROJECT_ROOT}/hack/custom-boilerplate.go.txt \
   --input-dirs github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
   --output-package github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
-  --report-filename pkg/apis/api-rules/violation_exceptions.list \
+  --report-filename ${PROJECT_ROOT}/hack/installers/gen-crd-spec \
   $@
 
 go build -o ./dist/gen-crd-spec ${PACKAGES}/hack/installers/gen-crd-spec
