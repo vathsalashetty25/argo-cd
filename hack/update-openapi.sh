@@ -9,16 +9,17 @@ VERSION="v1alpha1"
 
 export GO111MODULE=off
 go build -o dist/openapi-gen ${CODEGEN_PKG}/cmd/openapi-gen
-
-PACKAGES="github.com/argoproj/argo-cd"
+go build -o dist/gen-crd-spec ${CODEGEN_PKG}/cmd/gen-crd-spec
 
 
 ./dist/openapi-gen \
   --go-header-file ${PROJECT_ROOT}/hack/custom-boilerplate.go.txt \
   --input-dirs github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
   --output-package github.com/vathsalashetty25/argo-cd/pkg/apis/application/${VERSION} \
-  --report-filename ${PROJECT_ROOT}/hack/installers/gen-crd-spec \
+  --report-filename pkg/apis/api-rules/violation_exceptions.list \
   $@
 
-go build -o ./dist/gen-crd-spec ${PACKAGES}/hack/installers/gen-crd-spec
+./dist/gen-crd-spec \
+  --report-filename ${PACKAGES}/hack/installers/gen-crd-spec \
+  
 ./dist/gen-crd-spec
