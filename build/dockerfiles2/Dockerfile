@@ -1,6 +1,6 @@
 FROM golang:1.14.12-buster as argocd-build
 
-WORKDIR /go/src/github.com/argoproj/argo-cd
+WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 RUN go get golang.org/x/tools/cmd/goimports
 
 COPY go.mod go.mod
@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
-WORKDIR /go/src/github.com/argoproj/argo-cd
+WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 
 
 
@@ -47,7 +47,7 @@ COPY go.sum go.sum
 
 RUN go mod download
 
-RUN go env -w  GO111MODULE=auto
+#RUN go env -w  GO111MODULE=auto
 #RUN go clean -modcache
 #RUN ./hack/update-manifests.sh
 #RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
