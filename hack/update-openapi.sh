@@ -19,5 +19,5 @@ go build -o dist/openapi-gen ${CODEGEN_PKG}/cmd/openapi-gen
   --report-filename pkg/apis/api-rules/violation_exceptions.list \
   $@
 
-go build -o ./dist/gen-crd-spe ${CODEGEN_PKG}/hack/gen-crd-spe
+go build -o ./dist/gen-crd-spe ${PROJECT_ROOT}/hack/gen-crd-spe
 ./dist/gen-crd-spe
