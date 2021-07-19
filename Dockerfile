@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=ubuntu:20.10
 ####################################################################################################
 # Builder image
-# Initial stage which pulls prepares build dependencies and CLI tooling we need for our final image
+# Initial stage which pulls prepares build dependencies and CLI tooling we ned for our final image
 # Also used as the image in CI jobs so needs all dependencie
 ####################################################################################################
 FROM golang:1.14.12 as builder
