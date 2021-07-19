@@ -53,6 +53,9 @@ ADD hack hack
 #ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 #RUN ./hack/update-codegen.sh
 RUN go mod vendor
+
+RUN go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.3.0
+
 #RUN ./hack/update-codegen.sh
 #RUN ./hack/update-manifests.sh
 #RUN ./hack/generate-proto.sh
