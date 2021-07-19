@@ -62,6 +62,8 @@ RUN go mod download
 
 RUN rm -rf vendor/
 
+RUN go mod vendor
+
 
 #RUN set -x
 #RUN export GOPATH=$(go env GOPATH)
