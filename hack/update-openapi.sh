@@ -3,7 +3,7 @@ set -o errexit
 set -o nounset
 #set -o pipefail
 
-PROJECT_ROOT=$(cd $(dirname "$0")/.. ; pwd)
+PROJECT_ROOT=/go/src/github.com/argoproj/argo-cd
 CODEGEN_PKG=${PROJECT_ROOT}/vendor/k8s.io/kube-openapi
 VERSION="v1alpha1"
 
