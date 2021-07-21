@@ -31,3 +31,20 @@ jobs:
             --platform linux/ppc64le \
             --output "type=image,push=false" \
             --file ./Dockerfile .
+ # get image tag
+      - run: echo ::set-output name=tag::$(cat ./VERSION)-${GITHUB_SHA::8}
+        working-directory: ./src/github.com/vathsalashetty25/argo-cd2
+        id: image       
+      # build
+      - run: |
+          docker build -t argo-cd2:latest .
+          make image DEV_IMAGE=true DOCKER_PUSH=false IMAGE_NAMESPACE=docker.pkg.github.com/vathsalashetty25/repo-for-images IMAGE_TAG=${{ steps.image.outputs.tag }}
+        working-directory: ./src/github.com/vathsalashetty25/argo-cd2
+      # publish
+      - run: |
+          docker login docker.pkg.github.com --username $USERNAME --password $PASSWORD
+          docker push docker.pkg.github.com/vathsalashetty25/repo-for-images/argocd2:${{ steps.image.outputs.tag }}
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.TOKEN }}
+      # deploy
