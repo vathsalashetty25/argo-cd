@@ -40,7 +40,7 @@ jobs:
             --build-arg VERSION=${VERSION} \
             --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
             --build-arg VCS_REF=${GITHUB_SHA::8} \
-            ${TAGS} --file ./dockerfiles1/Dockerfile ./dockerfiles1
+            ${TAGS} --file ./build/dockerfiles1/Dockerfile ./build/dockerfiles1
       -
         name: Set up Docker Buildx
         uses: crazy-max/ghaction-docker-buildx@v3
