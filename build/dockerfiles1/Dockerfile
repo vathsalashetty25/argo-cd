@@ -26,7 +26,7 @@ WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 ADD hack/install.sh .
 ADD hack/installers installers
 ADD hack/tool-versions.sh .
-ADD hack hack
+ADD hack/hack hack
 
 
 RUN ./install.sh helm2-linux
@@ -34,10 +34,10 @@ RUN ./install.sh helm-linux
 RUN ./install.sh kustomize-linux
 
 
-COPY go.mod go.mod
-COPY go.sum go.sum
+#COPY go.mod go.mod
+#COPY go.sum go.sum
 
-RUN go mod download
+#RUN go mod download
 
 
 RUN helm2 init --client-only
