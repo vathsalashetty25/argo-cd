@@ -26,7 +26,7 @@ WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 ADD hack/install.sh .
 ADD hack/installers installers
 ADD hack/tool-versions.sh .
-ADD hack/hack hack
+ADD hack hack
 
 
 RUN ./install.sh helm2-linux
