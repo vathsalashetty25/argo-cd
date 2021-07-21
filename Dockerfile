@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=ubuntu:20.10
+ARG BASE_IMAGE=ubuntu:20.10@sha256:09ec5a4f8c30537574711fd78b0a91eb457c7df3c2fe9cc57201e8c7e2d3a336
 ####################################################################################################
 # Builder image
 # Initial stage which pulls prepares build dependencies and CLI tooling we ned for our final image
