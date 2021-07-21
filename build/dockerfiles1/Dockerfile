@@ -23,8 +23,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /go/src/github.com/vathsalashetty25/argo-cd
 
-#ADD hack/install.sh .
-#ADD hack/installers installers
+ADD hack/install.sh .
+ADD hack/installers installers
 #ADD hack/tool-versions.sh .
 #ADD hack hack
 
